@@ -1,0 +1,28 @@
+﻿Inspired from Pluralsight course - C# 10 design patterns - Kevin Dockx - https://www.pluralsight.com/courses/c-sharp-10-design-patterns
+
+Points to remember
+1) Structure of IElement - Disparate classes like Customer, Employees, etc are ELEMENTS.
+
+    interface IElement
+        {
+            void Accept(IVisitor visitor);
+        }
+
+2) Make the elements (i.e. Customer, Employee) implment IElement interface.
+
+3) Structure of IVisitor
+
+    interface IVisitor
+        {
+            void VisitCustomer(Customer customer);
+            void VisitEmployee(Employee employee);
+        }
+
+    Another variation of the above interface is to have a single method void Visit(IElement element). But then the implementation of Visit method
+    would have the if-else logic. if element is Customer, if element is Employee etc.
+    
+Both approaches are fine.
+The goal is separate the discount logic (visitor operation) from the concrete implementation of Elements (Customer class, Employee class)
+This also helps in accumulating the discounts given to everyone.
+
+
